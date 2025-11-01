@@ -185,22 +185,52 @@ export default function Page() {
 
   return (
     <div className="min-h-screen">
-      <header className="sticky top-0 z-50 w-full backdrop-blur bg-white/80 border-b">
-        <Section className="flex h-16 items-center justify-between">
-          <a href="#home" className="flex items-center gap-2 font-semibold">
-            <CoffeeIcon className="h-5 w-5" /> Beanery Blend
-          </a>
-          <nav className="hidden md:flex items-center gap-6 text-sm">
-            <a className="hover:opacity-70" href="#shop">Shop</a>
-            <a className="hover:opacity-70" href="#about">Our Story</a>
-            <a className="hover:opacity-70" href="#subscribe">Subscribe</a>
-            <a className="hover:opacity-70" href="#contact">Contact</a>
-          </nav>
-          <div className="flex items-center gap-3">
-            <Button variant="secondary" onClick={()=>location.assign('#shop')}>Shop now</Button>
-          </div>
-        </Section>
-      </header>
+      <<header className="sticky top-0 z-50 w-full backdrop-blur bg-white/80 border-b">
+  <Section className="flex h-16 items-center justify-between">
+    <a href="#home" className="flex items-center gap-2 font-semibold">
+      <CoffeeIcon className="h-5 w-5" /> Beanery Blend
+    </a>
+
+    {/* Desktop nav */}
+    <nav className="hidden md:flex items-center gap-6 text-sm">
+      <a className="hover:opacity-70" href="#shop">Shop</a>
+      <a className="hover:opacity-70" href="#about">Our Story</a>
+      <a className="hover:opacity-70" href="#subscribe">Subscribe</a>
+      <a className="hover:opacity-70" href="#contact">Contact</a>
+    </nav>
+
+    <div className="hidden md:flex items-center gap-3">
+      <Button variant="secondary" onClick={() => location.assign('#shop')}>Shop now</Button>
+    </div>
+
+    {/* Mobile hamburger */}
+    <button
+      className="md:hidden rounded-xl p-2 hover:bg-neutral-100"
+      aria-label="Open menu"
+      onClick={() => setMobileOpen((v:boolean) => !v)}
+    >
+      {/* 3 lines */}
+      <span className="block h-0.5 w-5 bg-neutral-900 mb-1"></span>
+      <span className="block h-0.5 w-5 bg-neutral-900 mb-1"></span>
+      <span className="block h-0.5 w-5 bg-neutral-900"></span>
+    </button>
+  </Section>
+
+  {/* Mobile slide-down menu */}
+  {mobileOpen && (
+    <div className="md:hidden border-t bg-white">
+      <Section className="py-3 flex flex-col gap-3">
+        <a className="py-1" href="#shop" onClick={() => setMobileOpen(false)}>Shop</a>
+        <a className="py-1" href="#about" onClick={() => setMobileOpen(false)}>Our Story</a>
+        <a className="py-1" href="#subscribe" onClick={() => setMobileOpen(false)}>Subscribe</a>
+        <a className="py-1" href="#contact" onClick={() => setMobileOpen(false)}>Contact</a>
+        <Button variant="secondary" onClick={() => { setMobileOpen(false); location.assign('#shop'); }}>
+          Shop now
+        </Button>
+      </Section>
+    </div>
+  )}
+</header>
 
       <Section id="home" className="pt-16 pb-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">

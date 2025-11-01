@@ -185,7 +185,7 @@ export default function Page() {
 
   return (
     <div className="min-h-screen">
-      <<header className="sticky top-0 z-50 w-full backdrop-blur bg-white/80 border-b">
+      <header className="sticky top-0 z-50 w-full backdrop-blur bg-white/80 border-b">
   <Section className="flex h-16 items-center justify-between">
     <a href="#home" className="flex items-center gap-2 font-semibold">
       <CoffeeIcon className="h-5 w-5" /> Beanery Blend
@@ -200,16 +200,15 @@ export default function Page() {
     </nav>
 
     <div className="hidden md:flex items-center gap-3">
-      <Button variant="secondary" onClick={() => location.assign('#shop')}>Shop now</Button>
+      <Button variant="secondary" onClick={()=>location.assign('#shop')}>Shop now</Button>
     </div>
 
     {/* Mobile hamburger */}
     <button
       className="md:hidden rounded-xl p-2 hover:bg-neutral-100"
       aria-label="Open menu"
-      onClick={() => setMobileOpen((v:boolean) => !v)}
+      onClick={() => setMobileOpen(v => !v)}
     >
-      {/* 3 lines */}
       <span className="block h-0.5 w-5 bg-neutral-900 mb-1"></span>
       <span className="block h-0.5 w-5 bg-neutral-900 mb-1"></span>
       <span className="block h-0.5 w-5 bg-neutral-900"></span>
